@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30天健康餐单 🥗</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🥗 30天健康餐单</h1>
+    <p class="real-date" id="realDate"></p>
+  </header>
+
+  <main>
+
+    <!-- 进度概览 -->
+    <div class="overview">
+      <span class="week-badge" id="weekBadge">第1周</span>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">1 / 30</span>
+      </div>
+      <span class="checkin-count" id="checkinCount">已打卡 0 天</span>
+    </div>
+
+    <!-- 天数导航 -->
+    <div class="nav-row">
+      <button class="nav-btn" id="prevBtn" onclick="navigate(-1)" aria-label="上一天">&#8249;</button>
+      <div class="day-title">第 <span id="dayNum">1</span> 天</div>
+      <button class="nav-btn" id="nextBtn" onclick="navigate(1)" aria-label="下一天">&#8250;</button>
+    </div>
+
+    <!-- 餐单卡片 -->
+    <div class="meal-grid">
+
+      <div class="meal-card breakfast-card">
+        <div class="card-header">
+          <span class="card-emoji">🌅</span>
+          <h2 class="card-label">早餐</h2>
+        </div>
+        <ul class="food-list" id="breakfastList"></ul>
+      </div>
+
+      <div class="meal-card dinner-card">
+        <div class="card-header">
+          <span class="card-emoji">🌙</span>
+          <h2 class="card-label">晚餐</h2>
+        </div>
+        <ul class="food-list" id="dinnerList"></ul>
+      </div>
+
+    </div>
+
+    <!-- 打卡 & 今天 -->
+    <div class="action-row">
+      <button class="btn-today" onclick="goToToday()">📅 跳到今天</button>
+      <button class="btn-checkin" id="checkinBtn" onclick="toggleCheckin()">
+        <span id="checkinIcon">○</span> 打卡完成
+      </button>
+    </div>
+
+    <!-- 开始日期设置 -->
+    <details class="setup-panel">
+      <summary>⚙️ 设置计划开始日期</summary>
+      <div class="setup-body">
+        <p>设置第1天对应的日期，之后「跳到今天」可自动定位。</p>
+        <div class="setup-row">
+          <label for="startDateInput">第1天是：</label>
+          <input type="date" id="startDateInput" />
+          <button class="btn-save" onclick="saveStartDate()">保存</button>
+        </div>
+        <p class="setup-hint" id="setupHint"></p>
+      </div>
+    </details>
+
+  </main>
+
+  <footer>
+    <p>坚持30天，打造更好的自己 💪</p>
+    <p><a href="https://github.com/" target="_blank" rel="noopener">在 GitHub 上查看源码</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
